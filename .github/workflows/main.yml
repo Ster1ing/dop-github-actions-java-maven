@@ -2,6 +2,9 @@ name: CI Maven Project
 
 on: [push, pull_request]
 
+env:
+    APP_PORT: 8082
+
 jobs:
   build:
 
