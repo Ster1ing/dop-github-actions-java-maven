@@ -1,0 +1,21 @@
+name: CI Maven Project
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+        matrix: 
+            java-version: [ 8, 11, 17 ]
+
+    steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-java@v3
+          with: 
+            java-version: ${{ matrix.java-version }}
+            distribution: 'temurin'
+        - run: mvn test
+
+#environment variable called APP_PORT 
